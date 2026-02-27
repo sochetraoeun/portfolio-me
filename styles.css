@@ -1,10 +1,11 @@
 /* ============================================
    Sochetra Oeun - Portfolio Styles
-   A warm, professional dark theme
+   Dark / Light / Night Light themes
    ============================================ */
 
-:root {
-  /* Color palette - green on deep slate */
+:root,
+[data-theme="dark"] {
+  /* Dark mode (default) */
   --bg-primary: #0f1419;
   --bg-secondary: #1a2332;
   --bg-card: #1e2a3a;
@@ -21,6 +22,63 @@
   --border: rgba(148, 163, 184, 0.12);
   --border-hover: rgba(34, 197, 94, 0.4);
 
+  --nav-bg: rgba(15, 20, 25, 0.85);
+  --nav-bg-scrolled: rgba(15, 20, 25, 0.95);
+  --orb-secondary: #3b82f6;
+  --grid-color: rgba(148, 163, 184, 0.03);
+  --shadow-accent: rgba(34, 197, 94, 0.3);
+}
+
+[data-theme="light"] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-elevated: #e2e8f0;
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+
+  --accent: #16a34a;
+  --accent-hover: #22c55e;
+  --accent-muted: rgba(22, 163, 74, 0.15);
+
+  --border: rgba(15, 23, 42, 0.08);
+  --border-hover: rgba(22, 163, 74, 0.4);
+
+  --nav-bg: rgba(248, 250, 252, 0.85);
+  --nav-bg-scrolled: rgba(248, 250, 252, 0.98);
+  --orb-secondary: #3b82f6;
+  --grid-color: rgba(15, 23, 42, 0.04);
+  --shadow-accent: rgba(22, 163, 74, 0.25);
+}
+
+[data-theme="night-light"] {
+  /* Warm, reduced blue light – easier on eyes */
+  --bg-primary: #1c1915;
+  --bg-secondary: #292520;
+  --bg-card: #2d2822;
+  --bg-elevated: #3d362e;
+
+  --text-primary: #f5e6d3;
+  --text-secondary: #c4b5a0;
+  --text-muted: #9c8b73;
+
+  --accent: #d4a853;
+  --accent-hover: #e6c06a;
+  --accent-muted: rgba(212, 168, 83, 0.2);
+
+  --border: rgba(196, 181, 160, 0.15);
+  --border-hover: rgba(212, 168, 83, 0.5);
+
+  --nav-bg: rgba(28, 25, 21, 0.9);
+  --nav-bg-scrolled: rgba(28, 25, 21, 0.98);
+  --orb-secondary: #c17f3a;
+  --grid-color: rgba(196, 181, 160, 0.04);
+  --shadow-accent: rgba(212, 168, 83, 0.25);
+}
+
+:root {
   /* Typography */
   --font-sans: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -44,12 +102,21 @@ html {
   scroll-behavior: smooth;
 }
 
+html {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
 body {
   font-family: var(--font-sans);
   background: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 a {
@@ -82,7 +149,7 @@ img {
   align-items: center;
   justify-content: space-between;
   padding: 1.25rem 2rem;
-  background: rgba(15, 20, 25, 0.85);
+  background: var(--nav-bg);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
@@ -145,6 +212,44 @@ img {
   transition: var(--transition-fast);
 }
 
+.nav-theme-wrap {
+  margin-left: 0.5rem;
+}
+
+.theme-switcher {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  background: var(--bg-elevated);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.theme-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.theme-btn:hover {
+  color: var(--text-primary);
+  background: var(--accent-muted);
+}
+
+.theme-btn.active {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
 /* ============================================
    Hero Section
    ============================================ */
@@ -185,7 +290,7 @@ img {
 .orb-2 {
   width: 300px;
   height: 300px;
-  background: linear-gradient(225deg, #3b82f6 0%, transparent 70%);
+  background: linear-gradient(225deg, var(--orb-secondary) 0%, transparent 70%);
   bottom: -50px;
   left: -50px;
   animation-delay: -10s;
@@ -195,8 +300,8 @@ img {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(148, 163, 184, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.03) 1px, transparent 1px);
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
@@ -305,7 +410,7 @@ img {
   background: var(--accent-hover);
   border-color: var(--accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+  box-shadow: 0 10px 30px var(--shadow-accent);
 }
 
 .btn-outline {
@@ -586,6 +691,173 @@ img {
   position: absolute;
   left: 0;
   color: var(--accent);
+}
+
+/* ============================================
+   Projects Section
+   ============================================ */
+
+.projects {
+  background: var(--bg-secondary);
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: row;
+  background: var(--bg-card);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: all var(--transition-smooth);
+}
+
+.project-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+}
+
+.project-accent {
+  flex-shrink: 0;
+  width: 4px;
+  min-height: 100%;
+  background: linear-gradient(to bottom, var(--accent), var(--accent-hover));
+  border-radius: 4px 0 0 4px;
+}
+
+.project-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.project-card-head {
+  padding: 2rem 2.5rem;
+}
+
+.project-name {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.project-summary {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.project-tags span {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+.project-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.project-toggle:hover {
+  color: var(--accent-hover);
+}
+
+.project-toggle::after {
+  content: "→";
+  font-size: 1rem;
+  transition: transform var(--transition-fast);
+}
+
+.project-toggle[aria-expanded="true"]::after {
+  transform: rotate(90deg);
+}
+
+.project-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  border-top: 1px solid transparent;
+}
+
+.project-details.is-open {
+  max-height: 2000px;
+  border-top-color: var(--border);
+}
+
+.project-details .project-block:first-child {
+  padding-top: 0;
+}
+
+.project-block {
+  margin-bottom: 1.5rem;
+  padding: 0 2.5rem;
+}
+
+.project-details .project-block:first-child {
+  padding-top: 1rem;
+}
+
+.project-block:last-child {
+  margin-bottom: 2rem;
+}
+
+.project-block h4 {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.project-block p,
+.project-block li {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.project-block ul,
+.project-block ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.project-block li {
+  margin-bottom: 0.25rem;
+}
+
+.project-block strong {
+  color: var(--text-primary);
 }
 
 /* ============================================
@@ -886,6 +1158,18 @@ img {
 
   .section-title {
     font-size: 1.5rem;
+  }
+
+  .project-card-head {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .project-name {
+    font-size: 1.15rem;
+  }
+
+  .project-block {
+    padding: 0 1.25rem;
   }
 
   .skills-grid {

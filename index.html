@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function () {
+        var theme = localStorage.getItem("portfolio-theme") || "dark";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <title>Sochetra Oeun | Frontend Developer</title>
     <link rel="stylesheet" href="styles.css" />
@@ -16,14 +22,46 @@
   <body>
     <!-- Navigation -->
     <nav class="navbar">
-      <div class="nav-brand">SO</div>
+      <div class="nav-brand">SOCHETRA</div>
       <ul class="nav-links">
         <li><a href="#hero">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li class="nav-theme-wrap">
+          <div class="theme-switcher" role="group" aria-label="Theme">
+            <button
+              type="button"
+              class="theme-btn"
+              data-theme="light"
+              aria-label="Light mode"
+              title="Light"
+            >
+              ☀
+            </button>
+            <button
+              type="button"
+              class="theme-btn"
+              data-theme="dark"
+              aria-label="Dark mode"
+              title="Dark"
+            >
+              🌙
+            </button>
+            <button
+              type="button"
+              class="theme-btn"
+              data-theme="night-light"
+              aria-label="Night light mode"
+              title="Night Light"
+            >
+              🌅
+            </button>
+          </div>
+        </li>
       </ul>
       <button class="nav-toggle" aria-label="Toggle menu">
         <span></span>
@@ -251,11 +289,354 @@
       </div>
     </section>
 
+    <!-- Projects Section -->
+    <section id="projects" class="section projects">
+      <div class="container">
+        <h2 class="section-title">
+          <span class="title-num">03</span>
+          Projects
+        </h2>
+        <div class="projects-list">
+          <!-- Parking Management -->
+          <article class="project-card">
+            <span class="project-accent" aria-hidden="true"></span>
+            <div class="project-card-body">
+              <div class="project-card-head">
+                <h3 class="project-name">Parking Management Admin</h3>
+                <p class="project-summary">
+                  Admin dashboard for parking operators to run and monitor
+                  parking facilities.
+                </p>
+                <div class="project-tags">
+                  <span>Vue 3</span>
+                  <span>TypeScript</span>
+                  <span>i18n</span>
+                  <span>Arco Design</span>
+                  <span>Pinia</span>
+                  <span>Chart.js</span>
+                  <span>Vue Router</span>
+                  <span>WebSocket</span>
+                  <span>qrcode-vue3</span>
+                </div>
+                <button
+                  type="button"
+                  class="project-toggle"
+                  aria-expanded="false"
+                  aria-controls="parking-details"
+                  data-target="parking-details"
+                >
+                  View details
+                </button>
+              </div>
+              <div id="parking-details" class="project-details">
+                <div class="project-block">
+                  <h4>Who it's for</h4>
+                  <ul>
+                    <li>
+                      <strong>Parking operators</strong> – manage lots, devices,
+                      and staff
+                    </li>
+                    <li>
+                      <strong>Guards/booth staff</strong> – handle payments and
+                      booth activity
+                    </li>
+                    <li>
+                      <strong>Finance/admin</strong> – view settlements,
+                      reports, and transactions
+                    </li>
+                    <li>
+                      <strong>System admins</strong> – manage users, roles, and
+                      permissions
+                    </li>
+                  </ul>
+                </div>
+                <div class="project-block">
+                  <h4>Main use cases</h4>
+                  <ul>
+                    <li>
+                      <strong>Monitor</strong> – real-time dashboard for
+                      revenue, vehicle counts, and device status
+                    </li>
+                    <li>
+                      <strong>Control</strong> – configure parking lots,
+                      devices, and storage
+                    </li>
+                    <li>
+                      <strong>Track</strong> – car and motorcycle entry/exit
+                      records
+                    </li>
+                    <li>
+                      <strong>Manage money</strong> – settlements, booth
+                      payments, and transaction errors
+                    </li>
+                    <li>
+                      <strong>Report</strong> – business and statistical
+                      reports, blacklists/whitelists
+                    </li>
+                    <li>
+                      <strong>Admin</strong> – users, roles, permissions, and
+                      system logs
+                    </li>
+                  </ul>
+                </div>
+                <div class="project-block">
+                  <h4>Features I worked on</h4>
+                  <ol>
+                    <li>
+                      <strong>Real-time dashboard</strong> – Live metrics
+                      (revenue, vehicle count, online payment, camera status),
+                      charts, WebSocket, KPI stats
+                    </li>
+                    <li>
+                      <strong>Vehicle management</strong> – CRUD, filters,
+                      pagination, separate flows for cars and motorcycles
+                    </li>
+                    <li>
+                      <strong>Entry/exit record tracking</strong> – Car and
+                      motorcycle records with search, filters, pagination
+                    </li>
+                    <li>
+                      <strong>Device monitoring & operations</strong> – Device
+                      status, health, operation logs, storage management
+                    </li>
+                    <li>
+                      <strong>Parking configuration</strong> – Multi-step
+                      wizard, create/edit setups
+                    </li>
+                    <li>
+                      <strong>Financial management</strong> – Settlement
+                      summary, booth payments, transaction error handling
+                    </li>
+                    <li>
+                      <strong>Reporting & analytics</strong> – Chart.js
+                      visualizations, blacklist and whitelist management
+                    </li>
+                    <li>
+                      <strong>RBAC</strong> – Role and staff management,
+                      v-permission directive, route guards
+                    </li>
+                    <li>
+                      <strong>i18n</strong> – 4 languages (English, Khmer,
+                      Chinese, Vietnamese)
+                    </li>
+                    <li>
+                      <strong>Real-time</strong> – WebSocket, Firebase,
+                      OneSignal, JWT auth with refresh tokens
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Property & Building Management -->
+          <article class="project-card">
+            <span class="project-accent" aria-hidden="true"></span>
+            <div class="project-card-body">
+              <div class="project-card-head">
+                <h3 class="project-name">Property & Building Management</h3>
+                <p class="project-summary">
+                  Comprehensive platform for managing properties, buildings,
+                  tenants, billing, access control, and operations.
+                </p>
+                <div class="project-tags">
+                  <span>Vue 3</span>
+                  <span>TypeScript</span>
+                  <span>i18n</span>
+                  <span>Arco Design</span>
+                  <span>Pinia</span>
+                  <span>Chart.js</span>
+                  <span>Vue Router</span>
+                  <span>WebSocket</span>
+                  <span>qrcode-vue3</span>
+                </div>
+                <button
+                  type="button"
+                  class="project-toggle"
+                  aria-expanded="false"
+                  aria-controls="property-details"
+                  data-target="property-details"
+                >
+                  View details
+                </button>
+              </div>
+              <div id="property-details" class="project-details">
+                <div class="project-block">
+                  <h4>Who it's for</h4>
+                  <ul>
+                    <li>
+                      <strong>Property managers</strong> – manage buildings,
+                      units, and configurations
+                    </li>
+                    <li>
+                      <strong>Enterprise/company admins</strong> – manage
+                      employees, contracts, and fees
+                    </li>
+                    <li>
+                      <strong>Finance staff</strong> – handle billing, payments,
+                      and settlements
+                    </li>
+                    <li>
+                      <strong>Maintenance staff</strong> – process service and
+                      maintenance orders
+                    </li>
+                    <li>
+                      <strong>Security staff</strong> – manage access control,
+                      gates, and devices
+                    </li>
+                    <li>
+                      <strong>System admins</strong> – manage users, roles, and
+                      permissions
+                    </li>
+                  </ul>
+                </div>
+                <div class="project-block">
+                  <h4>Main use cases</h4>
+                  <ul>
+                    <li>
+                      <strong>Manage properties</strong> – buildings, floors,
+                      units, spaces
+                    </li>
+                    <li>
+                      <strong>Manage tenants & contracts</strong> – enterprises,
+                      employees, leave, resignations
+                    </li>
+                    <li>
+                      <strong>Billing & payments</strong> – tenant bills,
+                      refunds, fee settings, transactions
+                    </li>
+                    <li>
+                      <strong>Access control</strong> – gates, biometric
+                      devices, cards, entry/exit records
+                    </li>
+                    <li>
+                      <strong>Operations</strong> – meals, utilities, lockers,
+                      maintenance, rescue center
+                    </li>
+                    <li>
+                      <strong>Report & admin</strong> – reports, blacklist,
+                      feedback, announcements, system settings
+                    </li>
+                  </ul>
+                </div>
+                <div class="project-block">
+                  <h4>Features I worked on</h4>
+                  <ol>
+                    <li>
+                      <strong>Property & building management</strong> – Project
+                      overview, building/floor/unit type management, space
+                      management
+                    </li>
+                    <li>
+                      <strong>Owner & tenant management</strong> –
+                      Enterprise/company, contracts, employee management, leave,
+                      resignation, merchant
+                    </li>
+                    <li>
+                      <strong>Billing & financial management</strong> – Tenant
+                      bills, refunds, fee settings, transaction history
+                    </li>
+                    <li>
+                      <strong>Access control system</strong> – Entry/exit
+                      records, gates, biometric devices, gatekeeper, cards,
+                      real-time monitoring
+                    </li>
+                    <li>
+                      <strong>Vehicle management</strong> – Registration, access
+                      records, tracking
+                    </li>
+                    <li>
+                      <strong>Meal management</strong> – Dashboard, orders,
+                      catering, delivery, packages, events
+                    </li>
+                    <li>
+                      <strong>Utility management</strong> – Meter devices,
+                      water/electricity usage, reporting
+                    </li>
+                    <li>
+                      <strong>Locker management</strong> – Cabinet management,
+                      order records
+                    </li>
+                    <li>
+                      <strong>Maintenance & service orders</strong> – Order
+                      management, tracking
+                    </li>
+                    <li>
+                      <strong>Rescue center</strong> – Rescue list, monitoring
+                      dashboard, real-time notifications
+                    </li>
+                    <li>
+                      <strong>Report management</strong> – Reporting list,
+                      alerts, custom reports
+                    </li>
+                    <li>
+                      <strong>Blacklist management</strong> – List, review,
+                      detection, security monitoring
+                    </li>
+                    <li>
+                      <strong>Property suggestion & feedback</strong> –
+                      Suggestion management, user feedback
+                    </li>
+                    <li>
+                      <strong>Operation management</strong> – Posters,
+                      announcements, notification center
+                    </li>
+                    <li>
+                      <strong>Fitness management</strong> – Members, club,
+                      financial, access control
+                    </li>
+                    <li>
+                      <strong>Account & configuration</strong> – Users, roles,
+                      permissions, Purple Chat integration
+                    </li>
+                    <li>
+                      <strong>Authentication & security</strong> – JWT, 2FA,
+                      RBAC, device fingerprinting, route guards
+                    </li>
+                    <li>
+                      <strong>Real-time features</strong> – WebSocket
+                      (Socket.io), live notifications, rescue/access/bill
+                      updates
+                    </li>
+                    <li>
+                      <strong>Data visualization</strong> – Chart.js, employee
+                      statistics, meal/gate analytics
+                    </li>
+                    <li>
+                      <strong>Internationalization</strong> – 4 languages
+                      (English, Chinese, Vietnamese, Khmer)
+                    </li>
+                    <li>
+                      <strong>Document & file handling</strong> – PDF,
+                      Excel/CSV, QR codes, image cropping
+                    </li>
+                    <li>
+                      <strong>Integrations</strong> – Firebase, OneSignal,
+                      Google Maps, Google Translate, Purple Chat, Telegram
+                    </li>
+                    <li>
+                      <strong>UI/UX</strong> – Responsive, Quill editor,
+                      SortableJS, Lottie, Swiper
+                    </li>
+                    <li>
+                      <strong>Technical stack</strong> – Vue 3 (Composition
+                      API), TypeScript, Vite, Pinia, Arco Design Vue · 100+
+                      APIs, 100+ stores, 160+ components
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- Skills Section -->
     <section id="skills" class="section skills">
       <div class="container">
         <h2 class="section-title">
-          <span class="title-num">03</span>
+          <span class="title-num">04</span>
           Skills
         </h2>
         <div class="skills-grid">
@@ -368,7 +749,7 @@
     <section id="education" class="section education">
       <div class="container">
         <h2 class="section-title">
-          <span class="title-num">04</span>
+          <span class="title-num">05</span>
           Education
         </h2>
         <div class="education-timeline">
@@ -417,7 +798,7 @@
     <section id="contact" class="section contact">
       <div class="container">
         <h2 class="section-title">
-          <span class="title-num">05</span>
+          <span class="title-num">06</span>
           Get In Touch
         </h2>
         <div class="contact-content">
